@@ -11,7 +11,7 @@
 >因需找出第一个不重复单词，所以需记录word的位置，word写入block的方式为block每行写入word position，position指word是文件中的第几个词，如下：  
 >>>word1 position1   
 >>>word2 position2   
->>>>>...  
+    ...  
   
  __2.map__  
 >依次读取12个block文件，找出每个block中不重复的word，遍历完一个block后，将不重复的word哈希到12个hashfile中，记录格式如step1,确保相同的word进入>一个hashfile  
