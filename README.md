@@ -14,7 +14,7 @@
     ...  
   
  __2.map__  
->依次读取12个block文件，找出每个block中不重复的word，遍历完一个block后，将不重复的word哈希到12个hashfile中，记录格式如step1,确保相同的word进入>一个hashfile  
+>依次读取12个block文件，找出每个block中不重复的word，遍历完一个block后，将不重复的word哈希到12个hashfile中，记录格式如step1,确保相同的word进入一个hashfile  
 
 __3.reduce__
 >依次读取step2中生成的12个hashfile，找出每个hashfile中第一个不重复的word，缓存word及其position，遍历完hashfile后，找到缓存中postion最小的word，即为第一个不重复的词  
