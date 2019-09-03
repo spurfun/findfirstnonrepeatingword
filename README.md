@@ -40,3 +40,23 @@ __3.reduce__
 将上述流程用单节点实现，每个阶段的计算结果落到磁盘，对文件foreach遍历代替节点的并行执行  
 在上述shuffle阶段，代码中与map阶段合并  
 在上述finalize阶段，代码中与reduce阶段合并  
+
+
+**获取每个文件中不重复的词及第一个不重复词的算法：**  
+代码见https://github.com/spurfun/findfirstnonrepeatingword/blob/master/src/main/java/com/pingCAP/findFirstNonRepeatingWord/filetool/FindNonRepeationgWord.java  
+维持一个map和双向链表doubleList  
+doubleList的node存储词及其位置，记为word  
+map的key为词，value为双向链表的节点  
+按行遍历文件，如果词string不在map的key中则执行：  
+*if not map.contains(string){  
+map.put(string, word); //string加入map  
+doubleList.addLast(word);  //string放入双向链表尾部  
+}*  
+如果词string在map的key中，代表词string重复出现，则执行  
+*if map.contains(string){  
+map.put(string, null); //将key中对应的key设为空值  
+doubleList.remove(map.get(string));  //在doubleList中删除map对应的value  
+}*  
+遍历完成后，doubleList中的值中的词即为不重复的词  
+doubleList的头节点中的词即为第一个不重复的词  
+时间复杂度为O(n)，n为文件中词数  
