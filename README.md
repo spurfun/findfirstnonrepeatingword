@@ -25,7 +25,7 @@ __3.reduce__
 在MapReduce中使用多个节点来并行处理任务，一个完整的MapReduce任务除了map和reduce两个计算阶段，还有map之前对文件的切分split，map和reduce任务之间的数据传递shuffle阶段，及最终的整理finalize阶段  
 如统计一个文本中所有单词出现的次数wordCount，使用mapReduce的计算过程大致如下：  
 ![wordCount](https://github.com/spurfun/findfirstnonrepeatingword/blob/master/src/main/resources/wordCount.png)  
-这里我们假设有m个节点，大致执行流程如下：  
+在本题中这里我们假设有m个节点，使用MapReduce大致执行流程如下：  
 >split：  
 >将文件均分到m个节点上，将这些划分之后的文件我们称为block，因为题目要求找到第一个不重复的词，这里我们将词及每个词在原文件中的位置（即第几个词）发送到m个节点上  
 >map：  
