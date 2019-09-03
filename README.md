@@ -60,3 +60,11 @@ doubleList.remove(map.get(string));  //在doubleList中删除map对应的value
 遍历完成后，doubleList中的值中的词即为不重复的词  
 doubleList的头节点中的词即为第一个不重复的词  
 时间复杂度为O(n)，n为文件中词数  
+
+
+**IO成本**  
+O(3n)  
+**时间复杂度**  
+O(3n)  
+n为原文件中单词个数  
+
